@@ -2,7 +2,7 @@
 
 <style>
     .cover-bg {
-        background-image: url('/assets/img/bg/RealEstate-bg1.jpg');
+        background-image: url('/assets/img/bg/nssWLogo.jpg');
         background-size: cover;
     }
 
