@@ -1,55 +1,48 @@
-<header>
-    <nav class="navbar sticky-top navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="<?=BASE_URL?>">
-                <img src="/assets/img/RealEstate.png" alt="Logo" height="35" class="d-inline-block align-text-top rounded-4">
-            </a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li><a class="nav-link" href="<?=BASE_URL?>">Home</a></li>
-                    <li><a class="nav-link" href="<?=BASE_URL?>about.php">About</a></li>
-                    <li><a class="nav-link" href="<?=BASE_URL?>events.php">Events</a></li>
-                    <li><a class="nav-link" href="<?=BASE_URL?>contact.php">Contact</a></li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <!-- @{ string action = "Login", controller = "Home"; }
-                    @if (Session["Email"] == null)
-                    { -->
-                        <a class="btn btn-success" href="<?=BASE_URL?>login.php">Login</a>
-                        <a class="btn btn-info ms-2" href="<?=BASE_URL?>register.php">Sign Up</a>
-                    <!-- }
-                    else
-                    {
+<headerr id="header" class="header fixed-top d-flex align-items-center">
+    <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+            <li class="nav-item dropdown pe-3">
+                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                    <img src="/assets/admin/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">
+                            <?php echo $_SESSION['email']?>
+                        </span>
+                </a><!-- End Profile Iamge Icon -->
 
-                        if (Session["Type"].Equals("User"))
-                        {
-                            action = "Dashboard";
-                            controller = "User";
-                        }
-                        else if (Session["Type"].Equals("Vendor"))
-                        {
-                            action = "Dashboard";
-                            controller = "Vendor";
-                        }
-                        else if (Session["Type"].Equals("Admin"))
-                        {
-                            action = "Dashboard";
-                            controller = "Admin";
-                        }
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                    <li class="dropdown-header">
+                        <h6>
+                            <?php echo $_SESSION['email']?>
+                        </h6>
+                        <span>
+                            Admin
+                        </span>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
 
-                        <a href="@Url.Action(action, controller)">
-                            <span class="text-white ps-2">
-                                @Session["Email"].ToString()
-                            </span>
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="@Url.Action("Profile","Admin")">
+                            <i class="bi bi-person"></i>
+                            <span>My Profile</span>
                         </a>
-                        <a class="btn btn-danger ms-2" href="<?=BASE_URL?>logout.php">Logout</a>
-                    } -->
-                </form>
-            </div>
-        </div>
-    </nav>
-</header>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="@Url.Action("Logout", "Admin")">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Sign Out</span>
+                        </a>
+                    </li>
+
+                </ul><!-- End Profile Dropdown Items -->
+            </li><!-- End Profile Nav -->
+
+        </ul>
+    </nav><!-- End Icons Navigation -->
+</headerr>

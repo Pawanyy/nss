@@ -16,3 +16,5 @@
 
 <!-- Template Main CSS File -->
 <link href="<?=BASE_URL?>assets/admin/css/style.css" rel="stylesheet">
+<!-- jQuery -->
+<script src="<?=BASE_URL?>assets/plugins/jquery/jquery-3.4.1.min.js"></script>
