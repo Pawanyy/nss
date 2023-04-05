@@ -94,6 +94,7 @@ require_once __DIR__ . "/include/layout-start.php";
                 <th scope="col">User Email</th>
                 <th scope="col">User Date</th>
                 <th scope="col">Registerd Date</th>
+                <th scope="col">Details</th>
             </tr>
         </thead>
         <tbody>
@@ -108,11 +109,16 @@ require_once __DIR__ . "/include/layout-start.php";
                     <td><?=$value['email']?></td>
                     <td><?=$value['phone']?></td>
                     <td><?=$value['reg_date']?></td>
+                    <td>
+                        <a href="<?=ADMIN_URL?>user.php?user_id=<?=$value['id']?>">
+                            visit
+                        </a>
+                    </td>    
                 </tr>
             <?php } ?>
             <?php if($sl == 0) { ?>
                 <tr>
-                    <td colspan="5">
+                    <td colspan="7">
                         <div class="text-center py-2">
                             No Registered Users
                         </div>
