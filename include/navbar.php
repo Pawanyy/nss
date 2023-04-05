@@ -10,32 +10,38 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li><a class="nav-link" href="<?=BASE_URL?>">Home</a></li>
-                    <li><a class="nav-link" href="<?=BASE_URL?>about.php">About</a></li>
-                    <li><a class="nav-link" href="<?=BASE_URL?>events.php">Events</a></li>
-                    <li><a class="nav-link" href="<?=BASE_URL?>contact.php">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>about.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>events.php">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>contact.php">Contact</a></li>
+
                 </ul>
                 <form class="d-flex" role="search">
                     <?php if(!$helper->IsLogin()) { ?>
                         <a class="btn btn-success" href="<?=BASE_URL?>login.php">Login</a>
                         <a class="btn btn-info ms-2" href="<?=BASE_URL?>register.php">Sign Up</a>
                     <?php } else { ?>
-                        <?php
-                            if ($helper->IsUserLogin())
-                            {
-                                $action = BASE_URL . "profile.php";
-                            }
-                            else 
-                            {
-                                $action = BASE_URL . "profile.php";
-                            }
-                        ?>
-
-                        <a href="<?=$action?>">
+                        <?php if ($helper->IsUserLogin()) { ?>
+                        <span class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white ps-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?=$_SESSION['email']?>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?=BASE_URL?>profile.php">Profile</a></li>
+                                <li><a class="dropdown-item" href="<?=BASE_URL?>donations.php">Donations</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="<?=BASE_URL?>myEvents.php">Registered Event</a></li>
+                            </ul>
+                        </span>
+                        <?php } else { ?>
+                        <a href="<?=BASE_URL . "profile.php"?>">
                             <span class="text-white ps-2">
                                 <?=$_SESSION['email']?>
                             </span>
                         </a>
+                        <?php } ?>
+
+                        
                     <a class="btn btn-danger ms-2" href="<?=BASE_URL?>logout.php">Logout</a>
                     <?php } ?>
                 </form>
