@@ -7,3 +7,7 @@ $database = new Database($_ENV['DB_HOST'], $_ENV['DB_NAME'], $_ENV['DB_USER'], $
 $conn = $database->getConnectionMysqli();
 
 $helper = new Helper();
+
+$sqlSettings = "SELECT * FROM tbl_settings";
+$resultSettings = $conn -> query($sqlSettings);
+$settings = $resultSettings -> fetch_assoc();

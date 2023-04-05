@@ -131,22 +131,22 @@
                             <i class="bi-geo-alt"></i>
                             <div class="media-body">
                                 <h5 class="mt-0">Office Address</h5>
-                                <p>Thane, Maharashtra, India</p>
+                                <p><?=$settings['address']?></p>
                             </div>
                         </div>
                         <div class="media">
                             <i class="bi-phone"></i>
                             <div class="media-body">
                                 <h5 class="mt-0">Phone Number</h5>
-                                <p>Phone: <a href="tel:123-4567-890">+91 1234567890</a> </p>
+                                <p>Phone: <a href="tel:<?=$settings['phone']?>"><?=$settings['phone']?></a> </p>
                             </div>
                         </div>
                         <div class="media mrg-btn-0">
                             <i class="bi-envelope-open-fill"></i>
                             <div class="media-body">
                                 <h5 class="mt-0">Email Address</h5>
-                                <p><a href="#">info@nss.com</a></p>
-                                <p><a href="#">https://nss.com</a></p>
+                                <p><a href="#"><?=$settings['email']?></a></p>
+                                <p><a href="#"><?=$settings['website']?></a></p>
                             </div>
                         </div>
                     </div>

@@ -62,6 +62,13 @@
         </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
+            <a class="nav-link collapsed" href="<?=ADMIN_URL?>settings.php">
+                <i class="bi bi-gear"></i>
+                <span>Settings</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
             <a class="nav-link collapsed" href="<?=ADMIN_URL?>faqs.php">
                 <i class="bi bi-question-circle"></i>
                 <span>F.A.Q</span>

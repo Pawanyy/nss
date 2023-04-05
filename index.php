@@ -15,9 +15,9 @@
 <section>
     <div class="p-4 p-md-5 mb-4 rounded cover-bg">
         <div class="col-md-6 p-4 text-container rounded">
-            <h1 class="display-4 fst-italic">RealEstate, Inc</h1>
+            <h1 class="display-4 fst-italic"><?=$settings['name']?></h1>
             <p class="lead my-3">
-                This is India's No. 1 property portal, which deals with every aspect of consumers' needs in the real estate industry. It is an online forum where buyers, sellers, and brokers/agents can exchange information about real estate properties quickly, effectively, and inexpensively. At Real Estate Website, you can advertise a property, search for a property, browse through properties, build your property microsite, and stay updated with the latest news and trends in the realty sector. With ever-evolving online search behavior, this website shares updated information relevant to real estate activities, assisting prospective buyers in making informed buying decisions. We make online property search easier, quicker, and smarter!
+                <?=$settings['main_desc']?>
             </p>
         </div>
     </div>

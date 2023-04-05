@@ -17,8 +17,8 @@ $faqRows = $resultFaq -> fetch_all(MYSQLI_ASSOC);
         <section class="py-5 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">RealEstate, Inc</h1>
-                    <p class="lead text-muted">This is India’s No. 1 property portal, deals with every aspect of the consumers’ needs in the real estate industry. It is an online forum where buyers, sellers and brokers/agents can exchange information about real estate properties quickly, effectively and inexpensively.</p>
+                    <h1 class="fw-light"><?=$settings['name']?></h1>
+                    <p class="lead text-muted"><?=$settings['about_desc']?></p>
                     <p>
                         <a href="/" class="btn btn-primary my-2">Home</a>
                         <a href="<?=BASE_URL?>contact.php" class="btn btn-secondary my-2">Contact Us</a>

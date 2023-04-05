@@ -5,7 +5,7 @@
             <div class="col-6 mb-3">
                 <a class="d-inline-flex align-items-center mb-2 text-body-secondary text-decoration-none" href="/" aria-label="Bootstrap">
                     <!-- <img src="~/assets/img/RealEstateLogo.png" alt="Logo" height="50" class="rounded-3"> -->
-                    <span class="fs-2 ms-2">NSS</span>
+                    <span class="fs-2 ms-2"><?=$settings['name']?></span>
                 </a>
                 <ul class="list-unstyled small">
                     <li class="mb-2">Designed and built with all the ❤️ in the world.</li>
@@ -44,7 +44,7 @@
 
 
         <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-            <p>&copy; <?php echo date('Y'); ?> NSS, Inc. All rights reserved.</p>
+            <p>&copy; <?php echo date('Y'); ?> <?=$settings['name']?>. All rights reserved.</p>
             <ul class="list-unstyled d-flex">
                 <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter" /></svg></a></li>
                 <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram" /></svg></a></li>
