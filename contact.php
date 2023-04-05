@@ -1,4 +1,26 @@
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
+<?php
+    if(isset($_POST['Send'])){
+        $name = $_POST['NAME'];
+        $email = $_POST['EMAIL'];
+        $subject = $_POST['SUBJECT'];
+        $message = $_POST['MESSAGE'];
+        $phone = $_POST['PHONE'];
+        $created_at = date('Y-m-d h:i:s A');
+        
+        $sql = "INSERT INTO `tbl_contact`(`name`, `email`, `subject`, `phone`, `message`, `date`)
+                VALUES ('$name','$email','$subject','$phone','$message','$created_at')";
+        $result = $conn -> query($sql);
+
+        if($result){
+            $helper->SendSuccessToast("Message Sent Sucessfully");
+            $helper->Redirect(BASE_URL . 'contact.php');
+        } else {
+            $helper->SendErrorToast("Error Occoured!!");
+            $helper->Redirect(BASE_URL . 'contact.php');
+        }
+    }
+?>
 <style>
     .form-group {
         margin-bottom: 10px !important;
@@ -51,12 +73,12 @@
                 <div class="col-lg-7 col-md-7 col-md-7">
                     <form action="" method="post">
                         <div class="form-horizontal">
-                            <p>We're always happy to help. Whether you need assistance with buying, selling, or renting a property, our team is here to answer your questions.<br>Contact us today by phone, email, or through our website's contact form.</p>
+                            <p>We're always happy to help, our team is here to answer your questions.<br>Contact us today by phone, email, or through our website's contact form.</p>
                             <hr>
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="NAME">Name</label>
                                 <div class="col-md-10">
-                                    <input class="form-control text-box single-line" data-val="true" data-val-length="The field Name must be a string with a minimum length of 2 and a maximum length of 100." data-val-length-max="100" data-val-length-min="2" data-val-required="The Name field is required." id="NAME" name="NAME" type="text" value="">
+                                    <input class="form-control text-box single-line" data-val="true" data-val-length="The field Name must be a string with a minimum length of 2 and a maximum length of 100." data-val-length-max="100" data-val-length-min="2" data-val-required="The Name field is required." id="NAME" name="NAME" type="text" value="" required>
                                     <span class="field-validation-valid text-danger" data-valmsg-for="NAME" data-valmsg-replace="true"></span>
                                 </div>
                             </div>
@@ -64,7 +86,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="EMAIL">Email</label>
                                 <div class="col-md-10">
-                                    <input class="form-control text-box single-line" data-val="true" data-val-length="The field Email must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" data-val-required="The Email field is required." id="EMAIL" name="EMAIL" type="email" value="">
+                                    <input class="form-control text-box single-line" data-val="true" data-val-length="The field Email must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" data-val-required="The Email field is required." id="EMAIL" name="EMAIL" type="email" value="" required>
                                     <span class="field-validation-valid text-danger" data-valmsg-for="EMAIL" data-valmsg-replace="true"></span>
                                 </div>
                             </div>
@@ -72,7 +94,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="SUBJECT">Subject</label>
                                 <div class="col-md-10">
-                                    <input class="form-control text-box single-line" data-val="true" data-val-length="The field Subject must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" data-val-required="The Subject field is required." id="SUBJECT" name="SUBJECT" type="text" value="">
+                                    <input class="form-control text-box single-line" data-val="true" data-val-length="The field Subject must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" data-val-required="The Subject field is required." id="SUBJECT" name="SUBJECT" type="text" value="" required>
                                     <span class="field-validation-valid text-danger" data-valmsg-for="SUBJECT" data-valmsg-replace="true"></span>
                                 </div>
                             </div>
@@ -80,7 +102,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="PHONE">Phone</label>
                                 <div class="col-md-10">
-                                    <input class="form-control text-box single-line" data-val="true" data-val-length="The field Phone must be a string with a minimum length of 10 and a maximum length of 10." data-val-length-max="10" data-val-length-min="10" data-val-required="The Phone field is required." id="PHONE" name="PHONE" type="tel" value="">
+                                    <input class="form-control text-box single-line" data-val="true" data-val-length="The field Phone must be a string with a minimum length of 10 and a maximum length of 10." data-val-length-max="10" data-val-length-min="10" data-val-required="The Phone field is required." id="PHONE" name="PHONE" type="tel" value="" required>
                                     <span class="field-validation-valid text-danger" data-valmsg-for="PHONE" data-valmsg-replace="true"></span>
                                 </div>
                             </div>
@@ -88,14 +110,14 @@
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="MESSAGE">Message</label>
                                 <div class="col-md-10">
-                                    <textarea class="form-control text-box multi-line" data-val="true" data-val-length="The field Message must be a string with a minimum length of 2 and a maximum length of 1000." data-val-length-max="1000" data-val-length-min="2" data-val-required="The Message field is required." id="MESSAGE" name="MESSAGE"></textarea>
+                                    <textarea class="form-control text-box multi-line" data-val="true" data-val-length="The field Message must be a string with a minimum length of 2 and a maximum length of 1000." data-val-length-max="1000" data-val-length-min="2" data-val-required="The Message field is required." id="MESSAGE" name="MESSAGE" required></textarea>
                                     <span class="field-validation-valid text-danger" data-valmsg-for="MESSAGE" data-valmsg-replace="true"></span>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Send Message" class="btn btn-primary">
+                                    <button type="submit" name="Send" class="btn btn-primary">Send Message</button>
                                 </div>
                             </div>
                         </div>
@@ -123,8 +145,8 @@
                             <i class="bi-envelope-open-fill"></i>
                             <div class="media-body">
                                 <h5 class="mt-0">Email Address</h5>
-                                <p><a href="#">info@realestate.com</a></p>
-                                <p><a href="#">https://realestate.com</a></p>
+                                <p><a href="#">info@nss.com</a></p>
+                                <p><a href="#">https://nss.com</a></p>
                             </div>
                         </div>
                     </div>
