@@ -17,10 +17,10 @@
             $_SESSION['role'] = $row['role'];
 
             $helper->SendSuccessToast("Login Sucessfully");
-            $helper->Redirect(ADMIN_URL . 'profile.php');
+            $helper->Redirect(BASE_URL . 'profile.php');
         } else {
             $helper->SendErrorToast("Email or Password Incorrect!!");
-            $helper->Redirect(ADMIN_URL . 'login.php');
+            $helper->Redirect(BASE_URL . 'login.php');
         }
     }
 ?>
