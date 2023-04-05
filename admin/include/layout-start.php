@@ -31,8 +31,8 @@
         <div class="pagetitle">
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/Admin/dashboard">Home</a></li>
-                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                    <li class="breadcrumb-item"><a href="<?=ADMIN_URL?>">Home</a></li>
+                    <li class="breadcrumb-item active"><?=$title?></li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->

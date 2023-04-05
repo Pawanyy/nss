@@ -4,49 +4,49 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="@Url.Action("Dashboard", "Admin")">
+            <a class="nav-link " href="<?=ADMIN_URL?>dashboard.php">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="@Url.Action("Index", "PropertyTypes")">
+            <a class="nav-link collapsed" href="<?=ADMIN_URL?>events.php">
                 <i class="bi bi-houses"></i>
-                <span>Property Type</span>
+                <span>Events</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="@Url.Action("Index", "PropertyStatus")">
+            <a class="nav-link collapsed" href="<?=ADMIN_URL?>donations.php">
                 <i class="bi bi-buildings"></i>
                 <span>Property Status</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="@Url.Action("Index", "Countries")">
+            <a class="nav-link collapsed" href="<?=ADMIN_URL?>donations.php">
                 <i class="bi bi-globe-americas"></i>
-                <span>Countries</span>
+                <span>Donations</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="@Url.Action("Index", "States")">
+            <a class="nav-link collapsed" href="<?=ADMIN_URL?>dashboard.php">
                 <i class="bi bi-map"></i>
                 <span>States</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="@Url.Action("Index", "Cities")">
+            <a class="nav-link collapsed" href="<?=ADMIN_URL?>dashboard.php">
                 <i class="bi bi-pin-map"></i>
                 <span>Cities</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="@Url.Action("Index", "Users")">
+            <a class="nav-link collapsed" href="<?=ADMIN_URL?>users.php">
                 <i class="bi bi-person-vcard"></i>
                 <span>Users</span>
             </a>
@@ -55,21 +55,21 @@
         <li class="nav-heading">Pages</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="@Url.Action("Profile","Admin")">
+            <a class="nav-link collapsed" href="<?=ADMIN_URL?>profile.php">
                 <i class="bi bi-person"></i>
                 <span>Profile</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="@Url.Action("Index", "Faqs")">
+            <a class="nav-link collapsed" href="<?=ADMIN_URL?>faq.php">
                 <i class="bi bi-question-circle"></i>
                 <span>F.A.Q</span>
             </a>
         </li><!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="@Url.Action("Index", "Contacts")">
+            <a class="nav-link collapsed" href="<?=ADMIN_URL?>contact.php">
                 <i class="bi bi-envelope"></i>
                 <span>Contact</span>
             </a>

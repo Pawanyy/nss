@@ -3,7 +3,7 @@
         <ul class="d-flex align-items-center">
             <li class="nav-item dropdown pe-3">
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="/assets/admin/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                    <img src="<?=BASE_URL?>/assets/admin/img/profile-img.jpg" alt="Profile" class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2">
                             <?php echo $_SESSION['email']?>
                         </span>
@@ -23,7 +23,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="@Url.Action("Profile","Admin")">
+                        <a class="dropdown-item d-flex align-items-center" href="<?=ADMIN_URL?>profile.php">
                             <i class="bi bi-person"></i>
                             <span>My Profile</span>
                         </a>
@@ -34,7 +34,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="@Url.Action("Logout", "Admin")">
+                        <a class="dropdown-item d-flex align-items-center" href="<?=ADMIN_URL?>logout.php">
                             <i class="bi bi-box-arrow-right"></i>
                             <span>Sign Out</span>
                         </a>

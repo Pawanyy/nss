@@ -35,31 +35,31 @@ $row = $result -> fetch_assoc();
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">
-                                    <?=$row['name']?>
-                                </h5>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">
-                                    <?=$row['description']?>
-                                </p>
-                                <?php if(empty($row['r_date'])){ ?>
-                                <a href="<?=BASE_URL?>events.php?event_id=<?=$row['id']?>"
-                                    onclick="return confirm('Are you Sure to book for <?=$row['name']?> event!')"
-                                    class="btn btn-warning">Book</a>
-                                    <?php } else { ?>
-                                        <button class="btn btn-secondary">Already Booked</button>
-                                        <span class="d-block font-sm mt-2"> Registered on: <?= $row['r_date'] ?></span>
-                                    <?php } ?>
-                            </div>
-                            <div class="card-footer">
-                                <span><?= $row['date'] ?></span>
-                            </div>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">
+                                <?=$row['name']?>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <?=$row['description']?>
+                            </p>
+                            <?php if(empty($row['r_date'])){ ?>
+                            <a href="<?=BASE_URL?>events.php?event_id=<?=$row['id']?>"
+                                onclick="return confirm('Are you Sure to book for <?=$row['name']?> event!')"
+                                class="btn btn-warning">Book</a>
+                                <?php } else { ?>
+                                    <button class="btn btn-secondary">Already Booked</button>
+                                    <span class="d-block font-sm mt-2"> Registered on: <?= $row['r_date'] ?></span>
+                                <?php } ?>
+                        </div>
+                        <div class="card-footer">
+                            <span><?= $row['date'] ?></span>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
