@@ -16,38 +16,28 @@
                     <li><a class="nav-link" href="<?=BASE_URL?>contact.php">Contact</a></li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <!-- @{ string action = "Login", controller = "Home"; }
-                    @if (Session["Email"] == null)
-                    { -->
+                    <?php if(!$helper->IsLogin()) { ?>
                         <a class="btn btn-success" href="<?=BASE_URL?>login.php">Login</a>
                         <a class="btn btn-info ms-2" href="<?=BASE_URL?>register.php">Sign Up</a>
-                    <!-- }
-                    else
-                    {
+                    <?php } else { ?>
+                        <?php
+                            if ($helper->IsUserLogin())
+                            {
+                                $action = BASE_URL . "profile.php";
+                            }
+                            else 
+                            {
+                                $action = BASE_URL . "profile.php";
+                            }
+                        ?>
 
-                        if (Session["Type"].Equals("User"))
-                        {
-                            action = "Dashboard";
-                            controller = "User";
-                        }
-                        else if (Session["Type"].Equals("Vendor"))
-                        {
-                            action = "Dashboard";
-                            controller = "Vendor";
-                        }
-                        else if (Session["Type"].Equals("Admin"))
-                        {
-                            action = "Dashboard";
-                            controller = "Admin";
-                        }
-
-                        <a href="@Url.Action(action, controller)">
+                        <a href="<?=$action?>">
                             <span class="text-white ps-2">
-                                @Session["Email"].ToString()
+                                <?=$_SESSION['email']?>
                             </span>
                         </a>
-                        <a class="btn btn-danger ms-2" href="<?=BASE_URL?>logout.php">Logout</a>
-                    } -->
+                    <a class="btn btn-danger ms-2" href="<?=BASE_URL?>logout.php">Logout</a>
+                    <?php } ?>
                 </form>
             </div>
         </div>

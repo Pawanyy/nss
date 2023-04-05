@@ -38,13 +38,15 @@ class Helper{
 
     } 
 
+    public function IsUserLogin(){
+
+        return ($this->IsLogin() && $_SESSION['role'] == ROLE::USER);
+
+    } 
+
     public function IsLogin(){
 
-        if(!isset($_SESSION['uid'])){
-
-            $this->Redirect(BASE_URL);
-
-        }
+        return (isset($_SESSION['uid']) && !empty($_SESSION['uid']));
 
     } 
 

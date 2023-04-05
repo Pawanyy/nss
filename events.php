@@ -1,8 +1,49 @@
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
 <?php
-    $sql = "SELECT * FROM tbl_events";
+
+    $user_id = 0;
+    $sql = "SELECT a.*, null as r_date FROM tbl_events a";
+
+    if($helper->isUserLogin()){
+        $user_id = $_SESSION['uid'];
+        $sql = "SELECT a.*, b.date AS r_date FROM tbl_events a LEFT JOIN tbl_event_register b ON a.id = b.event_id  WHERE b.user_id = $user_id OR b.user_id IS NULL";
+    }
+
     $result = $conn -> query($sql);
     $rows = $result -> fetch_all(MYSQLI_ASSOC);
+
+    if(isset($_GET['event_id']) && $helper->isUserLogin()){
+        $event_id = $_GET['event_id'];
+        $date = date('Y-m-d h:i:s A');
+
+        $sqlEventChk = "SELECT a.*, b.date AS r_date FROM tbl_events a LEFT JOIN tbl_event_register b ON a.id = b.event_id  WHERE a.id = $event_id AND (b.user_id = $user_id OR b.user_id IS NULL); ";
+        $resultEventChk = $conn -> query($sqlEventChk);
+        $rowEvent = $resultEventChk -> fetch_assoc();
+
+        if($rowEvent === false || empty($rowEvent)){
+            $helper->SendErrorToast("Event Doesn't Exist!!");
+            $helper->Redirect(BASE_URL . "events.php");
+        }
+
+        if( !empty($rowEvent['r_date'])){
+            $helper->SendErrorToast("Already Registered for $rowEvent[name] Event!!");
+            $helper->Redirect(BASE_URL . "events.php");
+        }
+
+        $sqlEventRegister = "INSERT INTO `tbl_event_register`( `event_id`, `user_id`, `date`) 
+                            VALUES ('$event_id','$user_id','$date')";
+        $resultEventRegister = $conn -> query($sqlEventRegister);
+
+        if($resultEventRegister){
+            $helper->SendSuccessToast("Registered for $rowEvent[name] Event!!");
+            $helper->Redirect(BASE_URL . "events.php");
+        } else {
+            $helper->SendErrorToast("Cannot Registered for $rowEvent[name] Event!!");
+            $helper->Redirect(BASE_URL . "events.php");
+        }
+    } else if(isset($_GET['event_id'])) {
+        $helper->Redirect(BASE_URL . "login.php");
+    }
 ?>
 <style>
     .card-body .detail .title {
@@ -59,13 +100,17 @@
                                 <p class="card-text">
                                     <?=$value['description']?>
                                 </p>
+                                <?php if(empty($value['r_date'])){ ?>
                                 <a href="<?=BASE_URL?>events.php?event_id=<?=$value['id']?>"
                                     onclick="return confirm('Are you Sure to book for <?=$value['name']?> event!')"
                                     class="btn btn-warning">Book</a>
-                                <button class="btn btn-secondary">Already Booked</button>
+                                    <?php } else { ?>
+                                        <button class="btn btn-secondary">Already Booked</button>
+                                        <span class="d-block font-sm mt-2"> Registered on: <?= $value['r_date'] ?></span>
+                                    <?php } ?>
                             </div>
                             <div class="card-footer">
-                                <?= $value['date'] ?>
+                                <span><?= $value['date'] ?></span>
                             </div>
                         </div>
                     </div>
