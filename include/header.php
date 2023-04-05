@@ -6,4 +6,4 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="<?=BASE_URL?>assets/plugins/bootstrap/css/bootstrap.min.css">
 <!-- jQuery -->
-<script src="<?=BASE_URL?>assets/plugins/jquery/jquery.min.js"></script>
+<script src="<?=BASE_URL?>assets/plugins/jquery/jquery-3.4.1.min.js"></script>

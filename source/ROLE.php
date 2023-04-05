@@ -3,5 +3,5 @@
 class ROLE{
 
     const ADMIN = 0;
-    const VENDOR = 1;
+    const USER = 1;
 }

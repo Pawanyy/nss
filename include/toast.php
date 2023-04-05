@@ -1,28 +1,18 @@
-<link rel="stylesheet" href="assets/custom/plugin/froiden-helper/helper.min.css">
-<script src="assets/custom/plugin/froiden-helper/helper.js"></script>
 <?php if(isset($_SESSION['sucmsg'])) { ?>
-<div id="toast-container" class="toast-top-right" aria-live="polite" role="alert">
-    <div class="toast toast-success" style="">
-        <div class="toast-message">
-            <?php echo $_SESSION['sucmsg']; ?>
-        </div>
-    </div>
+<div class="mt-3 alert alert-success alert-dismissible fade show" role="alert">
+    <?php echo $_SESSION['sucmsg']; ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php unset($_SESSION['sucmsg']); } ?>
 
 <?php if(isset($_SESSION['errmsg'])) { ?>
-<div id="toast-container" class="toast-top-right" aria-live="polite" role="alert">
-    <div class="toast toast-error" style="">
-        <div class="toast-message">
-            <?php echo $_SESSION['errmsg']; ?>
-        </div>
-    </div>
+<div class="mt-3 alert alert-warning alert-dismissible fade show" role="alert">
+    <?php echo $_SESSION['errmsg']; ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php unset($_SESSION['errmsg']); } ?>
 <script>
 $( document ).ready(function() {
-    setTimeout(function() {
-        $('.toast').fadeOut('slow');
-    }, 1500);
+    $('.alert').alert()
 });
 </script>

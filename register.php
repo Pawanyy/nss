@@ -1,4 +1,27 @@
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
+<?php
+    if(isset($_POST['Register'])){
+        $name = $_POST['FULLNAME'];
+        $email = $_POST['EMAIL'];
+        $password = $_POST['PASSWORD'];
+        $phone = $_POST['MOBILE'];
+        $aboutme = $_POST['ABOUT_ME'];
+        $role = ROLE::USER;
+        $created_at = date('Y-m-d h:i:s A');
+        
+        $sql = "INSERT INTO `tbl_users`(`name`, `email`, `password`, `phone`, `aboutme`, `role`, `created_at`) 
+                VALUES ('$name','$email','$password','$phone','$aboutme','$role','$created_at')";
+        $result = $conn -> query($sql);
+
+        if($result){
+            $helper->SendSuccessToast("Registered Sucessfully");
+            $helper->Redirect(BASE_URL . 'register.php');
+        } else {
+            $helper->SendSuccessToast("Error Occoured!!");
+            $helper->Redirect(BASE_URL . 'register.php');
+        }
+    }
+?>
 <style>
     html,
     body {
@@ -42,7 +65,7 @@
             <h4 class="text-center">User Register</h4>
         </div>
         <div class="card-body">
-            <form action="" method="post">
+            <form method="post">
                 <div class="form-horizontal row">
                     <div class="form-group col-12 col-md-6">
                         <label class="control-label" for="EMAIL">Email</label>
@@ -85,7 +108,7 @@
                     </div>
 
                     <div class="form-group mt-3 col-12">
-                        <input type="submit" value="Register" class="btn btn-primary w-100 mw-100">
+                        <button name="Register" class="btn btn-primary w-100 mw-100">Register</button>
                     </div>
                 </div>
             </form>        
