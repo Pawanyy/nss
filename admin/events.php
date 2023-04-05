@@ -10,8 +10,9 @@ $sql = "SELECT a.*, (SELECT COUNT(b.event_id) FROM tbl_event_register b WHERE b.
 $result = $conn -> query($sql);
 $rows = $result -> fetch_all(MYSQLI_ASSOC);
 ?>
-<div class="py-5">
+<div class="py-3">
 <div class="table-responsive">
+    <h1 class="py-2 px-3 border border-1">Events</h1>
     <table class="table table-bordered  table-striped">
         <thead>
             <tr>
@@ -36,6 +37,11 @@ $rows = $result -> fetch_all(MYSQLI_ASSOC);
                     <td>
                         <a href="<?=ADMIN_URL?>eventDetails.php?event_id=<?=$value['id']?>">
                             visit
+                        </a>
+                        <a class="ms-1"
+                            href="<?=ADMIN_URL?>users.php?did=<?=$value['id']?>"
+                            onclick="return confirm('Are you sure?')">
+                            Delete
                         </a>
                     </td>
                 </tr>

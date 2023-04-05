@@ -35,8 +35,9 @@ $rows = $result -> fetch_all(MYSQLI_ASSOC);
 $title = "Contact";
 require_once __DIR__ . "/include/layout-start.php"; 
 ?>
-<div class="py-5">
+<div class="py-3">
 <div class="table-responsive">
+    <h1 class="py-2 px-3 border border-1">Contacts</h1>
     <table class="table table-bordered  table-striped">
         <thead>
             <tr>
@@ -65,7 +66,8 @@ require_once __DIR__ . "/include/layout-start.php";
                     <td><?=$value['message']?></td>
                     <td><?=$value['date']?></td>
                     <td>
-                        <a href="<?=ADMIN_URL?>contact.php?did=<?=$value['id']?>"
+                        <a class="ms-1"
+                            href="<?=ADMIN_URL?>contact.php?did=<?=$value['id']?>"
                             onclick="return confirm('Are you sure?')">
                             Delete
                         </a>
@@ -76,7 +78,7 @@ require_once __DIR__ . "/include/layout-start.php";
                 <tr>
                     <td colspan="10">
                         <div class="text-center py-2">
-                            No Users
+                            No Contacts
                         </div>
                     </td>
                 </tr>

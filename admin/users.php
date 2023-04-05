@@ -23,10 +23,10 @@ if(isset($_GET['did']) && !empty($_GET['did'])){
         $conn -> query("DELETE FROM tbl_donation WHERE user_id = $user_id");
         $conn -> query("DELETE FROM tbl_event_register WHERE user_id = $user_id");
 
-        $helper->SendSuccessToast("User Updated Sucessfully");
+        $helper->SendSuccessToast("User Deleted Sucessfully");
         $helper->Redirect(ADMIN_URL . 'users.php');
     } else {
-        $helper->SendSuccessToast("User Update Failed!!");
+        $helper->SendSuccessToast("User Delete Failed!!");
         $helper->Redirect(ADMIN_URL . 'User.php');
     }
 
@@ -41,8 +41,9 @@ $sql = "SELECT a.*, COUNT(DISTINCT b.event_id) AS reg_events, SUM(d.donation) AS
 $result = $conn -> query($sql);
 $rows = $result -> fetch_all(MYSQLI_ASSOC);
 ?>
-<div class="py-5">
+<div class="py-3">
 <div class="table-responsive">
+    <h1 class="py-2 px-3 border border-1">Users</h1>
     <table class="table table-bordered  table-striped">
         <thead>
             <tr>
@@ -74,7 +75,9 @@ $rows = $result -> fetch_all(MYSQLI_ASSOC);
                         <a class="me-1" href="<?=ADMIN_URL?>user.php?user_id=<?=$value['id']?>">
                             visit
                         </a>
-                        <a href="<?=ADMIN_URL?>users.php?did=<?=$value['id']?>">
+                        <a class="ms-1"
+                            href="<?=ADMIN_URL?>users.php?did=<?=$value['id']?>"
+                            onclick="return confirm('Are you sure?')">
                             Delete
                         </a>
                     </td>
