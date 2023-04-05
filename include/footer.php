@@ -16,11 +16,10 @@
             <div class="col-2 mb-3">
                 <h5>Main</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">Home</a></li>
-                    <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">Properties</a></li>
-                    <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">Contact</a></li>
-                    <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-muted">About</a></li>
+                    <li class="nav-item mb-2"><a href="<?=BASE_URL?>" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="<?=BASE_URL?>events.php" class="nav-link p-0 text-muted">Events</a></li>
+                    <li class="nav-item mb-2"><a href="<?=BASE_URL?>contacts.php" class="nav-link p-0 text-muted">Contact</a></li>
+                    <li class="nav-item mb-2"><a href="<?=BASE_URL?>about.php" class="nav-link p-0 text-muted">About</a></li>
                 </ul>
             </div>
 
