@@ -2,8 +2,8 @@
 RewriteEngine On
 # RewriteBase /
 # NOT needed unless you're using mod_alias to redirect
-RewriteCond %{REQUEST_URI} !/public
-RewriteRule ^(.*)$ public/$1 [L]
+# RewriteCond %{REQUEST_URI} !/public
+# RewriteRule ^(.*)$ public/$1 [L]
 
 # Disable Directory listing
 Options -Indexes
