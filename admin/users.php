@@ -43,7 +43,10 @@ $rows = $result -> fetch_all(MYSQLI_ASSOC);
 ?>
 <div class="py-3">
 <div class="table-responsive">
-    <h1 class="py-2 px-3 border border-1">Users</h1>
+    <h1 class="py-2 px-3 border border-1 d-flex justify-content-between align-items-center">
+        <span>Users</span>
+        <a href="<?=ADMIN_URL?>addUser.php" class="btn btn-primary">Add User</a>
+    </h1>
     <table class="table table-bordered  table-striped">
         <thead>
             <tr>
