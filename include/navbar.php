@@ -20,6 +20,7 @@
                     <?php if(!$helper->IsLogin()) { ?>
                         <a class="btn btn-success" href="<?=BASE_URL?>login.php">Login</a>
                         <a class="btn btn-info ms-2" href="<?=BASE_URL?>register.php">Sign Up</a>
+                        <a class="btn btn-danger ms-2" href="<?=ADMIN_URL?>login.php">Admin</a>
                     <?php } else { ?>
                         <?php if ($helper->IsUserLogin()) { ?>
                         <span class="nav-item dropdown">
