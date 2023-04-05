@@ -45,6 +45,15 @@ $rows = $result -> fetch_all(MYSQLI_ASSOC);
                     </td>
                 </tr>
             <?php } ?>
+            <?php if($sl == 0) { ?>
+                <tr>
+                    <td colspan="5">
+                        <div class="text-center py-2">
+                            No Events
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?> 
         </tbody>
     </table>
 </div>
