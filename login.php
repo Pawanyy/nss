@@ -1,4 +1,29 @@
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
+<?php
+    if(isset($_POST['Login'])){
+        $email = $_POST['EMAIL'];
+        $password = $_POST['PASSWORD'];
+        $role = ROLE::USER;
+        
+        $sql = "SELECT * FROM `tbl_users` WHERE email = '$email' AND password = '$password' AND role = $role";
+        $result = $conn -> query($sql);
+        $row = $result -> fetch_assoc();
+
+        if($row !== false && !empty($row)){
+
+            $_SESSION['uid'] = $row['id'];
+            $_SESSION['name'] = $row['name'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['role'] = $row['role'];
+
+            $helper->SendSuccessToast("Login Sucessfully");
+            $helper->Redirect(BASE_URL . 'profile.php');
+        } else {
+            $helper->SendErrorToast("Email or Password Incorrect!!");
+            $helper->Redirect(BASE_URL . 'login.php');
+        }
+    }
+?>
 <style>
     html,
     body {
@@ -46,7 +71,7 @@
                     <div class="form-group mb-3">
                         <label class="control-label" for="EMAIL">Email</label>
                         <div class="col-md-12">
-                            <input class="form-control text-box single-line" data-val="true" data-val-length="The field Email must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" data-val-remote="Email already in use" data-val-remote-additionalfields="*.EMAIL" data-val-remote-url="/Remote/IsEmailExists" data-val-required="The Email field is required." id="EMAIL" name="EMAIL" type="email" value="">
+                            <input class="form-control text-box single-line" data-val="true" data-val-length="The field Email must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" data-val-remote="Email already in use" data-val-remote-additionalfields="*.EMAIL" data-val-remote-url="/Remote/IsEmailExists" data-val-required="The Email field is required." id="EMAIL" name="EMAIL" type="email" value="" required>
                             <span class="field-validation-valid text-danger" data-valmsg-for="EMAIL" data-valmsg-replace="true"></span>
                         </div>
                     </div>
@@ -54,14 +79,14 @@
                     <div class="form-group mb-3">
                         <label class="control-label" for="PASSWORD">Password</label>
                         <div class="col-md-12">
-                            <input class="form-control text-box single-line password" data-val="true" data-val-length="The field Password must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" data-val-required="The Password field is required." id="PASSWORD" name="PASSWORD" type="password">
+                            <input class="form-control text-box single-line password" data-val="true" data-val-length="The field Password must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" data-val-required="The Password field is required." id="PASSWORD" name="PASSWORD" type="password" required>
                             <span class="field-validation-valid text-danger" data-valmsg-for="PASSWORD" data-valmsg-replace="true"></span>
                         </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <div class="col-md-12">
-                            <input type="submit" value="Login" class="btn btn-primary w-100 mw-100">
+                            <button name="Login" class="btn btn-primary w-100 mw-100">Login</button>
                         </div>
                     </div>
                 </div>

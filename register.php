@@ -17,7 +17,7 @@
             $helper->SendSuccessToast("Registered Sucessfully");
             $helper->Redirect(BASE_URL . 'register.php');
         } else {
-            $helper->SendSuccessToast("Error Occoured!!");
+            $helper->SendErrorToast("Error Occoured!!");
             $helper->Redirect(BASE_URL . 'register.php');
         }
     }
@@ -70,7 +70,7 @@
                     <div class="form-group col-12 col-md-6">
                         <label class="control-label" for="EMAIL">Email</label>
                         <div class="">
-                            <input class="form-control text-box single-line" data-val="true" data-val-length="The field Email must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" data-val-remote="Email already in use" data-val-remote-additionalfields="*.EMAIL" data-val-remote-url="/Remote/IsEmailExists" data-val-required="The Email field is required." id="EMAIL" name="EMAIL" type="email" value="">
+                            <input class="form-control text-box single-line" data-val="true" data-val-length="The field Email must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" data-val-remote="Email already in use" data-val-remote-additionalfields="*.EMAIL" data-val-remote-url="/Remote/IsEmailExists" data-val-required="The Email field is required." id="EMAIL" name="EMAIL" type="email" value="" required>
                             <span class="field-validation-valid text-danger" data-valmsg-for="EMAIL" data-valmsg-replace="true"></span>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                     <div class="form-group col-12 col-md-6">
                         <label class="control-label" for="PASSWORD">Password</label>
                         <div class="">
-                            <input class="form-control text-box single-line password" data-val="true" data-val-length="The field Password must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" data-val-required="The Password field is required." id="PASSWORD" name="PASSWORD" type="password">
+                            <input class="form-control text-box single-line password" data-val="true" data-val-length="The field Password must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" data-val-required="The Password field is required." id="PASSWORD" name="PASSWORD" type="password" required>
                             <span class="field-validation-valid text-danger" data-valmsg-for="PASSWORD" data-valmsg-replace="true"></span>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                     <div class="form-group col-12 col-md-6">
                         <label class="control-label" for="FULLNAME">Full Name</label>
                         <div class="">
-                            <input class="form-control text-box single-line" data-val="true" data-val-length="The field Full Name must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" id="FULLNAME" name="FULLNAME" type="text" value="">
+                            <input class="form-control text-box single-line" data-val="true" data-val-length="The field Full Name must be a string with a minimum length of 2 and a maximum length of 255." data-val-length-max="255" data-val-length-min="2" id="FULLNAME" name="FULLNAME" type="text" value="" required>
                             <span class="field-validation-valid text-danger" data-valmsg-for="FULLNAME" data-valmsg-replace="true"></span>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                     <div class="form-group col-12 col-md-6">
                         <label class="control-label" for="MOBILE">Mobile</label>
                         <div class="">
-                            <input class="form-control text-box single-line" data-val="true" data-val-length="The field Mobile must be a string with a minimum length of 10 and a maximum length of 10." data-val-length-max="10" data-val-length-min="10" id="MOBILE" name="MOBILE" type="tel" value="">
+                            <input class="form-control text-box single-line" data-val="true" data-val-length="The field Mobile must be a string with a minimum length of 10 and a maximum length of 10." data-val-length-max="10" data-val-length-min="10" id="MOBILE" name="MOBILE" type="tel" value="" required>
                             <span class="field-validation-valid text-danger" data-valmsg-for="MOBILE" data-valmsg-replace="true"></span>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                     <div class="form-group col-12 col-md-12">
                         <label class="control-label" for="ABOUT_ME">About Me</label>
                         <div class="">
-                            <textarea class="form-control text-box multi-line" data-val="true" data-val-length="The field About Me must be a string with a minimum length of 2 and a maximum length of 1000." data-val-length-max="1000" data-val-length-min="2" id="ABOUT_ME" name="ABOUT_ME"></textarea>
+                            <textarea class="form-control text-box multi-line" data-val="true" data-val-length="The field About Me must be a string with a minimum length of 2 and a maximum length of 1000." data-val-length-max="1000" data-val-length-min="2" id="ABOUT_ME" name="ABOUT_ME" required></textarea>
                             <span class="field-validation-valid text-danger" data-valmsg-for="ABOUT_ME" data-valmsg-replace="true"></span>
                         </div>
                     </div>
