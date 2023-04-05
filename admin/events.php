@@ -2,6 +2,33 @@
 <?php
 $helper->IsAccessibleByAdmin();
 
+if(isset($_GET['did']) && !empty($_GET['did'])){
+    $event_id = $_GET['did'];
+    
+    $sqlEventChk = "SELECT a.* FROM tbl_events a WHERE a.id = $event_id";
+    $resultEventChk = $conn -> query($sqlEventChk);
+    $rowEvent = $resultEventChk -> fetch_assoc();
+    
+    if($rowEvent === false || empty($rowEvent)){
+        $helper->SendErrorToast("Event Doesn't Exist!!");
+        $helper->Redirect(ADMIN_URL . "events.php");
+    }
+
+    $sql = "DELETE FROM tbl_events WHERE id = $event_id";
+    $result = $conn -> query($sql);
+
+    if($result){
+        
+        $conn -> query("DELETE FROM tbl_event_register WHERE event_id = $event_id");
+
+        $helper->SendSuccessToast("Event Deleted Sucessfully");
+        $helper->Redirect(ADMIN_URL . 'events.php');
+    } else {
+        $helper->SendSuccessToast("Event Delete Failed!!");
+        $helper->Redirect(ADMIN_URL . 'events.php');
+    }
+}
+
 $title = "Events";
 require_once __DIR__ . "/include/layout-start.php"; 
 ?>
@@ -39,7 +66,7 @@ $rows = $result -> fetch_all(MYSQLI_ASSOC);
                             visit
                         </a>
                         <a class="ms-1"
-                            href="<?=ADMIN_URL?>users.php?did=<?=$value['id']?>"
+                            href="<?=ADMIN_URL?>events.php?did=<?=$value['id']?>"
                             onclick="return confirm('Are you sure?')">
                             Delete
                         </a>
