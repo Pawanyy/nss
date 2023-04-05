@@ -111,7 +111,7 @@ require_once __DIR__ . "/include/layout-start.php";
                     <td><?=$value['reg_date']?></td>
                     <td>
                         <a href="<?=ADMIN_URL?>user.php?user_id=<?=$value['id']?>">
-                            visit
+                            View
                         </a>
                     </td>    
                 </tr>

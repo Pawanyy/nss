@@ -65,7 +65,7 @@ $rows = $result -> fetch_all(MYSQLI_ASSOC);
                     <td><?=$value['date']?></td>
                     <td>
                         <a href="<?=ADMIN_URL?>user.php?user_id=<?=$value['id']?>">
-                            visit
+                            View
                         </a>
                         <a class="ms-1"
                             href="<?=ADMIN_URL?>donations.php?did=<?=$value['id']?>"

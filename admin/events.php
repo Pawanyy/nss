@@ -39,7 +39,10 @@ $rows = $result -> fetch_all(MYSQLI_ASSOC);
 ?>
 <div class="py-3">
 <div class="table-responsive">
-    <h1 class="py-2 px-3 border border-1">Events</h1>
+    <h1 class="py-2 px-3 border border-1 d-flex justify-content-between align-items-center">
+        <span>Events</span>
+        <a href="<?=ADMIN_URL?>addEvent.php" class="btn btn-primary">Add Event</a>
+    </h1>
     <table class="table table-bordered  table-striped">
         <thead>
             <tr>
@@ -63,7 +66,7 @@ $rows = $result -> fetch_all(MYSQLI_ASSOC);
                     <td><?=$value['reg_users']?></td>
                     <td>
                         <a href="<?=ADMIN_URL?>eventDetails.php?event_id=<?=$value['id']?>">
-                            visit
+                            View
                         </a>
                         <a class="ms-1"
                             href="<?=ADMIN_URL?>events.php?did=<?=$value['id']?>"

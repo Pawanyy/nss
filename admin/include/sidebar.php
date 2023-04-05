@@ -17,12 +17,12 @@
             </a>
         </li>
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link collapsed" href="<?=ADMIN_URL?>donations.php">
                 <i class="bi bi-buildings"></i>
                 <span>Property Status</span>
             </a>
-        </li>
+        </li> -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="<?=ADMIN_URL?>donations.php">
@@ -31,7 +31,7 @@
             </a>
         </li>
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link collapsed" href="<?=ADMIN_URL?>dashboard.php">
                 <i class="bi bi-map"></i>
                 <span>States</span>
@@ -43,7 +43,7 @@
                 <i class="bi bi-pin-map"></i>
                 <span>Cities</span>
             </a>
-        </li>
+        </li> -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="<?=ADMIN_URL?>users.php">
@@ -61,12 +61,12 @@
             </a>
         </li><!-- End Profile Page Nav -->
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link collapsed" href="<?=ADMIN_URL?>faq.php">
                 <i class="bi bi-question-circle"></i>
                 <span>F.A.Q</span>
             </a>
-        </li><!-- End F.A.Q Page Nav -->
+        </li>End F.A.Q Page Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="<?=ADMIN_URL?>contact.php">
