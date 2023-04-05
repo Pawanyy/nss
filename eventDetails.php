@@ -1,16 +1,14 @@
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
 <?php
 $user_id = 0;
-$sql = "SELECT a.*, null as r_date FROM tbl_events a";
 if($helper->isUserLogin()){
     $user_id = $_SESSION['uid'];
-    $sql = "SELECT a.*, (SELECT b.date FROM tbl_event_register b WHERE a.id=b.event_id AND b.user_id = $user_id) AS reg_date FROM tbl_events a;";
 }
 
 if(isset($_GET['event_id']) && !empty($_GET['event_id'])){
     $event_id = $_GET['event_id'];
     
-    $sqlEventChk = "SELECT a.* FROM tbl_events a";
+    $sqlEventChk = "SELECT a.* FROM tbl_events a WHERE a.id = $event_id";
     $resultEventChk = $conn -> query($sqlEventChk);
     $rowEvent = $resultEventChk -> fetch_assoc();
     
@@ -21,6 +19,12 @@ if(isset($_GET['event_id']) && !empty($_GET['event_id'])){
     
 } else {
     $helper->Redirect(BASE_URL . "events.php");
+}
+
+$sql = "SELECT a.*, null as r_date FROM tbl_events a WHERE a.id = $event_id";
+
+if($helper->isUserLogin()){
+    $sql = "SELECT a.*, (SELECT b.date FROM tbl_event_register b WHERE a.id=b.event_id AND b.user_id = $user_id) AS reg_date FROM tbl_events a WHERE a.id = $event_id; ";
 }
 
 $result = $conn -> query($sql);

@@ -16,7 +16,7 @@
         $event_id = $_GET['event_id'];
         $date = date('Y-m-d h:i:s A');
 
-        $sqlEventChk = "SELECT a.*, b.date AS r_date FROM tbl_events a LEFT JOIN tbl_event_register b ON a.id = b.event_id  WHERE a.id = $event_id AND (b.user_id = $user_id OR b.user_id IS NULL); ";
+        $sqlEventChk = "SELECT a.*, (SELECT b.date FROM tbl_event_register b WHERE a.id=b.event_id AND b.user_id = $user_id) AS reg_date FROM tbl_events a WHERE a.id = $event_id;";
         $resultEventChk = $conn -> query($sqlEventChk);
         $rowEvent = $resultEventChk -> fetch_assoc();
 
