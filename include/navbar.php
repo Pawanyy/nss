@@ -35,7 +35,7 @@
                             </ul>
                         </span>
                         <?php } else { ?>
-                        <a href="<?=BASE_URL . "profile.php"?>">
+                        <a href="<?=ADMIN_URL . "dashboard.php"?>">
                             <span class="text-white ps-2">
                                 <?=$_SESSION['email']?>
                             </span>
