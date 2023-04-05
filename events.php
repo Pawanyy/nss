@@ -98,7 +98,9 @@
                             </div>
                             <div class="card-body">
                                 <p class="card-text">
-                                    <?=$value['description']?>
+                                    <?=substr($value['description'], 0, 255)."..."?>
+                                    <a href="<?=BASE_URL?>eventDetails.php?event_id=<?=$value['id']?>"
+                                    class="btn btn-link text-decoration-none p-0">Read more</a>
                                 </p>
                                 <?php if(empty($value['r_date'])){ ?>
                                 <a href="<?=BASE_URL?>events.php?event_id=<?=$value['id']?>"
