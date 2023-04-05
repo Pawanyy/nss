@@ -1,4 +1,9 @@
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
+<?php
+    $sql = "SELECT * FROM tbl_events";
+    $result = $conn -> query($sql);
+    $rows = $result -> fetch_all(MYSQLI_ASSOC);
+?>
 <style>
     .card-body .detail .title {
         font-size: 18px !important;
@@ -30,20 +35,41 @@
 <main role="main">
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Browse Properties</h1>
-            <p class="lead text-muted mx-5 px-5">You can advertise your property, search for properties, browse through available listings, create your property microsite, and stay up-to-date with the latest news and trends in the real estate sector.</p>
+            <h1 class="jumbotron-heading">Browse Events</h1>
+            <p class="lead text-muted mx-5 px-5">You can Brouse For Events.</p>
             <p>
                 <a href="/" class="btn btn-primary my-2">Home</a>
-                <a href="/Home/Contact" class="btn btn-secondary my-2">Contact Us</a>
+                <a href="<?=BASE_URL?>contact.php" class="btn btn-secondary my-2">Contact Us</a>
             </p>
         </div>
     </section>
 
     <div class="album py-5 bg-light">
         <div class="container">
-
             <div class="row">
-
+                <?php foreach ($rows as $key => $value) { ?>
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">
+                                    <?=$value['name']?>
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <?=$value['description']?>
+                                </p>
+                                <a href="<?=BASE_URL?>events.php?event_id=<?=$value['id']?>"
+                                    onclick="return confirm('Are you Sure to book for <?=$value['name']?> event!')"
+                                    class="btn btn-warning">Book</a>
+                                <button class="btn btn-secondary">Already Booked</button>
+                            </div>
+                            <div class="card-footer">
+                                <?= $value['date'] ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>
