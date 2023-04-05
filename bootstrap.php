@@ -13,6 +13,8 @@ $dotenv -> load();
 if( ! defined ('BASE_URL'))
     define('BASE_URL', $_ENV['BASE_URL']);
 
+if( ! defined ('ADMIN_URL'))
+    define('ADMIN_URL', (BASE_URL . $_ENV['ADMIN_DIR'] . "/"));
 
 if($_ENV['ERROR_SHOW']){
     error_reporting(E_ALL);

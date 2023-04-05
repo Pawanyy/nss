@@ -43,6 +43,11 @@ class Helper{
         return ($this->IsLogin() && $_SESSION['role'] == ROLE::USER);
 
     } 
+    public function IsAdminLogin(){
+
+        return ($this->IsLogin() && $_SESSION['role'] == ROLE::ADMIN);
+
+    } 
 
     public function IsLogin(){
 
