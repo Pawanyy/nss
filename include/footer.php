@@ -18,7 +18,7 @@
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="<?=BASE_URL?>" class="nav-link p-0 text-muted">Home</a></li>
                     <li class="nav-item mb-2"><a href="<?=BASE_URL?>events.php" class="nav-link p-0 text-muted">Events</a></li>
-                    <li class="nav-item mb-2"><a href="<?=BASE_URL?>contacts.php" class="nav-link p-0 text-muted">Contact</a></li>
+                    <li class="nav-item mb-2"><a href="<?=BASE_URL?>contact.php" class="nav-link p-0 text-muted">Contact</a></li>
                     <li class="nav-item mb-2"><a href="<?=BASE_URL?>about.php" class="nav-link p-0 text-muted">About</a></li>
                 </ul>
             </div>
