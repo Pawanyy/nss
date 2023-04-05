@@ -2,6 +2,36 @@
 <?php
 $helper->IsAccessibleByAdmin();
 
+if(isset($_GET['did']) && !empty($_GET['did'])){
+    $user_id = $_GET['did'];
+    $role = ROLE::USER;
+    
+    $sqlUserChk = "SELECT a.* FROM tbl_users a WHERE a.id = $user_id AND a.role = $role";
+    $resultUserChk = $conn -> query($sqlUserChk);
+    $rowUser = $resultUserChk -> fetch_assoc();
+    
+    if($rowUser === false || empty($rowUser)){
+        $helper->SendErrorToast("User Doesn't Exist!!");
+        $helper->Redirect(ADMIN_URL . "users.php");
+    }
+
+    $sql = "DELETE FROM tbl_users WHERE id = $user_id";
+    $result = $conn -> query($sql);
+
+    if($result){
+        
+        $conn -> query("DELETE FROM tbl_donation WHERE user_id = $user_id");
+        $conn -> query("DELETE FROM tbl_event_register WHERE user_id = $user_id");
+
+        $helper->SendSuccessToast("User Updated Sucessfully");
+        $helper->Redirect(ADMIN_URL . 'users.php');
+    } else {
+        $helper->SendSuccessToast("User Update Failed!!");
+        $helper->Redirect(ADMIN_URL . 'User.php');
+    }
+
+}
+
 $title = "Users";
 require_once __DIR__ . "/include/layout-start.php"; 
 ?>
@@ -41,8 +71,11 @@ $rows = $result -> fetch_all(MYSQLI_ASSOC);
                     <td><?=$value['reg_events']?></td>
                     <td><?=$value['donation']?></td>
                     <td>
-                        <a href="<?=ADMIN_URL?>eventDetails.php?event_id=<?=$value['id']?>">
+                        <a class="me-1" href="<?=ADMIN_URL?>user.php?user_id=<?=$value['id']?>">
                             visit
+                        </a>
+                        <a href="<?=ADMIN_URL?>users.php?did=<?=$value['id']?>">
+                            Delete
                         </a>
                     </td>
                 </tr>

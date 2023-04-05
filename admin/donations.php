@@ -2,38 +2,13 @@
 <?php
 $helper->IsAccessibleByAdmin();
 
-if(isset($_GET['did']) && !empty($_GET['did'])){
-    $contact_id = $_GET['did'];
-    
-    $sqlContactChk = "SELECT a.* FROM tbl_contact a WHERE a.id = $contact_id";
-    $resultContactChk = $conn -> query($sqlContactChk);
-    $rowContact = $resultContactChk -> fetch_assoc();
-    
-    if($rowContact === false || empty($rowContact)){
-        $helper->SendErrorToast("Contact Doesn't Exist!!");
-        $helper->Redirect(ADMIN_URL . "contact.php");
-    }
-
-    $sql = "DELETE FROM tbl_contact WHERE id = $contact_id";
-    $result = $conn -> query($sql);
-
-    if($result){
-        $helper->SendSuccessToast("Contact Deleted Sucessfully");
-        $helper->Redirect(ADMIN_URL . 'contact.php');
-    } else {
-        $helper->SendSuccessToast("Contact Delete Failed!!");
-        $helper->Redirect(ADMIN_URL . 'contact.php');
-    }
-
-}
-
-$sql = "SELECT * FROM tbl_contact";
+$title = "Donations";
+require_once __DIR__ . "/include/layout-start.php"; 
+?>
+<?php
+$sql = "SELECT a.*, b.name, b.email, b.phone FROM tbl_donation a JOIN tbl_users b ON a.user_id=b.id;";
 $result = $conn -> query($sql);
 $rows = $result -> fetch_all(MYSQLI_ASSOC);
-?>
-<?php 
-$title = "Contact";
-require_once __DIR__ . "/include/layout-start.php"; 
 ?>
 <div class="py-5">
 <div class="table-responsive">
@@ -44,10 +19,9 @@ require_once __DIR__ . "/include/layout-start.php";
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone</th>
-                <th scope="col">Subject</th>
-                <th scope="col">Message</th>
-                <th scope="col">DateTime</th>
-                <th scope="col">Action</th>
+                <th scope="col">Donation Amount</th>
+                <th scope="col">Donation Date</th>
+                <th scope="col">User Details</th>
             </tr>
         </thead>
         <tbody>
@@ -61,13 +35,11 @@ require_once __DIR__ . "/include/layout-start.php";
                     <td><?=$value['name']?></td>
                     <td><?=$value['email']?></td>
                     <td><?=$value['phone']?></td>
-                    <td><?=$value['subject']?></td>
-                    <td><?=$value['message']?></td>
+                    <td><?=$value['donation']?></td>
                     <td><?=$value['date']?></td>
                     <td>
-                        <a href="<?=ADMIN_URL?>contact.php?did=<?=$value['id']?>"
-                            onclick="return confirm('Are you sure?')">
-                            Delete
+                        <a href="<?=ADMIN_URL?>user.php?user_id=<?=$value['id']?>">
+                            visit
                         </a>
                     </td>
                 </tr>
