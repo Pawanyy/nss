@@ -1,4 +1,9 @@
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
+<?php
+$sqlFaq = "SELECT a.*  FROM tbl_faq a; ";
+$resultFaq = $conn -> query($sqlFaq);
+$faqRows = $resultFaq -> fetch_all(MYSQLI_ASSOC);
+?>
 <main aria-labelledby="title">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -25,90 +30,24 @@
         <section id="About">
             <h1 class="text-center">FAQ</h1>
             <div class="accordion" id="accordionExample">
+                <?php 
+                $sl = 0;
+                foreach($faqRows as $key => $value) { 
+                    $sl++;
+                    ?>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_1">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_1" aria-expanded="true" aria-controls="collapse_1">
-                            <strong>Question 1:</strong>&nbsp;What types of properties does RealEstate offer?
+                    <h2 class="accordion-header" id="heading_<?=$sl?>">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_<?=$sl?>" aria-expanded="true" aria-controls="collapse_<?=$sl?>">
+                            <strong>Question <?=$sl?>:</strong>&nbsp; <?=$value['question']?>
                         </button>
                     </h2>
-                    <div id="collapse_1" class="accordion-collapse collapse" aria-labelledby="heading_1" data-bs-parent="#accordionExample">
+                    <div id="collapse_<?=$sl?>" class="accordion-collapse collapse" aria-labelledby="heading_<?=$sl?>" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <strong>Answer:</strong> RealEstate offers a vast selection of properties, including residential, commercial, and industrial properties.
+                            <strong>Answer:</strong> <?=$value['answer']?>
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_2">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_2" aria-expanded="true" aria-controls="collapse_2">
-                            <strong>Question 2:</strong>&nbsp;Is RealEstate available globally?
-                        </button>
-                    </h2>
-                    <div id="collapse_2" class="accordion-collapse collapse" aria-labelledby="heading_2" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>Answer:</strong> Yes, RealEstate has a global reach, offering properties in various locations worldwide.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_3">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_3" aria-expanded="true" aria-controls="collapse_3">
-                            <strong>Question 3:</strong>&nbsp;How does RealEstate ensure the security of transactions?
-                        </button>
-                    </h2>
-                    <div id="collapse_3" class="accordion-collapse collapse" aria-labelledby="heading_3" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>Answer:</strong> RealEstate employs state-of-the-art security measures to ensure the safety and security of all transactions.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_4">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_4" aria-expanded="true" aria-controls="collapse_4">
-                            <strong>Question 4:</strong>&nbsp;How does RealEstate compare to traditional real estate processes?
-                        </button>
-                    </h2>
-                    <div id="collapse_4" class="accordion-collapse collapse" aria-labelledby="heading_4" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>Answer:</strong> RealEstate offers a faster, more affordable, and more straightforward process compared to traditional real estate processes.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_5">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_5" aria-expanded="true" aria-controls="collapse_5">
-                            <strong>Question 5:</strong>&nbsp;What is the refund policy for RealEstate?
-                        </button>
-                    </h2>
-                    <div id="collapse_5" class="accordion-collapse collapse" aria-labelledby="heading_5" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>Answer:</strong> RealEstate offers a refund option in case clients are dissatisfied with the services provided.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_6">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_6" aria-expanded="true" aria-controls="collapse_6">
-                            <strong>Question 6:</strong>&nbsp;Is RealEstate easy to use?
-                        </button>
-                    </h2>
-                    <div id="collapse_6" class="accordion-collapse collapse" aria-labelledby="heading_6" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>Answer:</strong> Yes, RealEstate offers a user-friendly and straightforward experience for clients looking to buy, sell, or rent properties.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading_7">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_7" aria-expanded="true" aria-controls="collapse_7">
-                            <strong>Question 7:</strong>&nbsp;Can I access RealEstate remotely?
-                        </button>
-                    </h2>
-                    <div id="collapse_7" class="accordion-collapse collapse" aria-labelledby="heading_7" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>Answer:</strong> Yes, RealEstate allows clients to access and manage their real estate transactions remotely, providing convenience and flexibility.
-                        </div>
-                    </div>
-                </div>
+            <?php } ?>
             </div>
         </section>
     </div>
