@@ -40,7 +40,7 @@ $rows = $result -> fetch_all(MYSQLI_ASSOC);
                     <td><?=$value['r_date']?></td>
                     <td>
                         <a href="<?=BASE_URL?>eventDetails.php?event_id=<?=$value['id']?>">
-                            visit
+                            View
                         </a>
                     </td>
                 </tr>

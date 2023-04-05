@@ -61,12 +61,12 @@
             </a>
         </li><!-- End Profile Page Nav -->
 
-        <!-- <li class="nav-item">
-            <a class="nav-link collapsed" href="<?=ADMIN_URL?>faq.php">
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="<?=ADMIN_URL?>faqs.php">
                 <i class="bi bi-question-circle"></i>
                 <span>F.A.Q</span>
             </a>
-        </li>End F.A.Q Page Nav -->
+        </li><!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="<?=ADMIN_URL?>contact.php">
