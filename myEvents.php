@@ -12,7 +12,7 @@ $rows = $result -> fetch_all(MYSQLI_ASSOC);
 <section class="jumbotron text-center">
     <div class="container">
         <h1 class="jumbotron-heading">My Events</h1>
-        <p class="lead text-muted mx-5 px-5">You can Browse ypur Registered Events.</p>
+        <p class="lead text-muted mx-5 px-5">You can browse your Registered Events.</p>
     </div>
 </section>
 
