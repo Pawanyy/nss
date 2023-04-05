@@ -4,7 +4,7 @@ $user_id = 0;
 $sql = "SELECT a.*, null as r_date FROM tbl_events a";
 if($helper->isUserLogin()){
     $user_id = $_SESSION['uid'];
-    $sql = "SELECT a.*, b.date AS r_date FROM tbl_events a LEFT JOIN tbl_event_register b ON a.id = b.event_id  WHERE b.user_id = $user_id OR b.user_id IS NULL";
+    $sql = "SELECT a.*, (SELECT b.date FROM tbl_event_register b WHERE a.id=b.event_id AND b.user_id = $user_id) AS reg_date FROM tbl_events a;";
 }
 
 if(isset($_GET['event_id']) && !empty($_GET['event_id'])){
@@ -46,13 +46,13 @@ $row = $result -> fetch_assoc();
                             <p class="card-text">
                                 <?=$row['description']?>
                             </p>
-                            <?php if(empty($row['r_date'])){ ?>
+                            <?php if(empty($row['reg_date'])){ ?>
                             <a href="<?=BASE_URL?>events.php?event_id=<?=$row['id']?>"
                                 onclick="return confirm('Are you Sure to book for <?=$row['name']?> event!')"
                                 class="btn btn-warning">Book</a>
                                 <?php } else { ?>
                                     <button class="btn btn-secondary">Already Booked</button>
-                                    <span class="d-block font-sm mt-2"> Registered on: <?= $row['r_date'] ?></span>
+                                    <span class="d-block font-sm mt-2"> Registered on: <?= $row['reg_date'] ?></span>
                                 <?php } ?>
                         </div>
                         <div class="card-footer">
