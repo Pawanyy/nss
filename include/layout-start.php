@@ -13,5 +13,5 @@
 <body>
 <?php require_once dirname(__DIR__) . "/include/navbar.php"; ?>
 <main>
-    <div class="container body-content">
+    <div class="container body-content pt-3">
         <?php require_once dirname(__DIR__) . "/include/toast.php"; ?>
