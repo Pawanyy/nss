@@ -24,8 +24,10 @@ if(isset($_POST['update'])){
     $aboutme = $_POST['aboutme'];
     $password = $_POST['password'];
     $role = ROLE::USER;
+
+    $passwordStr = empty(trim($password)) ? "" : ", password='$password'";
     
-    $sql = "UPDATE tbl_users SET name='$name', phone='$phone', aboutme='$aboutme' WHERE id = $user_id";
+    $sql = "UPDATE tbl_users SET name='$name', phone='$phone', aboutme='$aboutme' " . $passwordStr . " WHERE id = $user_id";
     $result = $conn -> query($sql);
 
     if($result){
