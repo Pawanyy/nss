@@ -2,29 +2,31 @@
 <?php
 $helper->IsAccessibleByAdmin();
 
-if(isset($_GET['did']) && !empty($_GET['did'])){
-    $contact_id = $_GET['did'];
+$user_id = $_SESSION['uid'];
+if(isset($_POST['passwordUpdate'])){
+    $old_password = $_POST['oldPassword'];
+    $password = $_POST['newPassword'];
     
-    $sqlContactChk = "SELECT a.* FROM tbl_contact a WHERE a.id = $contact_id";
-    $resultContactChk = $conn -> query($sqlContactChk);
-    $rowContact = $resultContactChk -> fetch_assoc();
-    
-    if($rowContact === false || empty($rowContact)){
-        $helper->SendErrorToast("Contact Doesn't Exist!!");
-        $helper->Redirect(ADMIN_URL . "contact.php");
-    }
-
-    $sql = "DELETE FROM tbl_contact WHERE id = $contact_id";
+    $sql = "SELECT * FROM `tbl_users` WHERE id = $user_id AND password = '$old_password'";
     $result = $conn -> query($sql);
+    $row = $result -> fetch_assoc();
 
-    if($result){
-        $helper->SendSuccessToast("Contact Updated Sucessfully");
-        $helper->Redirect(ADMIN_URL . 'contact.php');
+    if($row !== false && !empty($row)){
+
+        $sql = "UPDATE tbl_users SET password='$password' WHERE id = $user_id";
+        $resultUpdate = $conn -> query($sql);
+
+        if($resultUpdate){
+            $helper->SendSuccessToast("Password Changed Sucessfully");
+            $helper->Redirect(BASE_URL . 'profile.php');
+        } else {
+            $helper->SendErrorToast("Password Update Failed!!");
+            $helper->Redirect(BASE_URL . 'profile.php');
+        }
     } else {
-        $helper->SendSuccessToast("Contact Update Failed!!");
-        $helper->Redirect(ADMIN_URL . 'contact.php');
+        $helper->SendErrorToast("Old Password Incorrect!!");
+        $helper->Redirect(BASE_URL . 'profile.php');
     }
-
 }
 
 $sql = "SELECT * FROM tbl_contact";

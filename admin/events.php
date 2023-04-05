@@ -1,4 +1,7 @@
-<?php 
+<?php require_once (dirname(__DIR__)) . "/config/conn.php"; ?>
+<?php
+$helper->IsAccessibleByAdmin();
+
 $title = "Events";
 require_once __DIR__ . "/include/layout-start.php"; 
 ?>

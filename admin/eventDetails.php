@@ -1,5 +1,7 @@
 <?php require_once (dirname(__DIR__)) . "/config/conn.php"; ?>
 <?php
+$helper->IsAccessibleByAdmin();
+
 if(isset($_GET['event_id']) && !empty($_GET['event_id'])){
     $event_id = $_GET['event_id'];
     
