@@ -10,8 +10,8 @@
     <?php require_once dirname(__DIR__) . "/include/header.php"; ?>
 </head>
 
-<body>
+<body class="bg-light bg-gradient">
 <?php require_once dirname(__DIR__) . "/include/navbar.php"; ?>
-<main>
+<main class="">
     <div class="container body-content pt-3">
         <?php require_once dirname(__DIR__) . "/include/toast.php"; ?>

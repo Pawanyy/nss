@@ -11,7 +11,7 @@ if(isset($_POST['update'])){
     $main_desc = $_POST['main_desc'];
     $about_desc = $_POST['about_desc'];
 
-    $conn -> query("DELETE FRON tbl_settings");
+    $conn -> query("DELETE FROM tbl_settings");
 
     $sql = "INSERT INTO `tbl_settings`(`name`, `address`, `phone`, `email`, `website`, `about_desc`, `main_desc`) 
             VALUES ('$name','$address','$phone','$email','$website','$about_desc','$main_desc')";
