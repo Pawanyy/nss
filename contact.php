@@ -4,11 +4,11 @@ $currentPage = "contact";
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
 <?php
     if(isset($_POST['Send'])){
-        $name = $_POST['NAME'];
-        $email = $_POST['EMAIL'];
-        $subject = $_POST['SUBJECT'];
-        $message = $_POST['MESSAGE'];
-        $phone = $_POST['PHONE'];
+        $name    = $conn->real_escape_string($_POST['NAME']);
+        $email   = $conn->real_escape_string($_POST['EMAIL']);
+        $subject = $conn->real_escape_string($_POST['SUBJECT']);
+        $message = $conn->real_escape_string($_POST['MESSAGE']);
+        $phone   = $conn->real_escape_string($_POST['PHONE']);
         $created_at = date('Y-m-d h:i:s A');
         
         $sql = "INSERT INTO `tbl_contact`(`name`, `email`, `subject`, `phone`, `message`, `date`)

@@ -3,13 +3,13 @@
 $helper->IsAccessibleByAdmin();
 
 if(isset($_POST['update'])){
-    $name = $_POST['name'];
-    $address = $_POST['address'];
-    $phone = $_POST['phone'];
-    $email = $_POST['email'];
-    $website = $_POST['website'];
-    $main_desc = $_POST['main_desc'];
-    $about_desc = $_POST['about_desc'];
+    $name       = $conn->real_escape_string($_POST['name']);
+    $address    = $conn->real_escape_string($_POST['address']);
+    $phone      = $conn->real_escape_string($_POST['phone']);
+    $email      = $conn->real_escape_string($_POST['email']);
+    $website    = $conn->real_escape_string($_POST['website']);
+    $main_desc  = $conn->real_escape_string($_POST['main_desc']);
+    $about_desc = $conn->real_escape_string($_POST['about_desc']);
 
     $conn -> query("DELETE FROM tbl_settings");
 

@@ -3,8 +3,8 @@
 $helper->IsAccessibleByAdmin();
 
 if(isset($_POST['create'])){
-    $name = $_POST['name'];
-    $description = $_POST['description'];
+    $name        = $conn->real_escape_string( $_POST['name']);
+    $description = $conn->real_escape_string( $_POST['description']);
     $date = $_POST['date'];
     
     $sql = "INSERT INTO `tbl_events`(`name`, `description`, `date`) 
@@ -22,14 +22,14 @@ if(isset($_POST['create'])){
 
 ?>
 <?php 
-$title = "Add User";
+$title = "Add Event";
 require_once __DIR__ . "/include/layout-start.php"; 
 ?>
 <section class="section">
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Add User</h5>
+            <h5 class="card-title">Add Event</h5>
             <!-- General Form Elements -->
             <form method="post">
                 <div class="row mb-3">

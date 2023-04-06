@@ -16,15 +16,23 @@ $currentPage = "home";
     }
 
     .cover-bg .text-container {
-        box-shadow: inset #0000004a 0px 0px 20px 200px;
+        box-shadow: inset #0000004a 0px 0px 200px 200px;
         color: white;
+    }
+
+    h1.site-title {
+        font-weight:600;
+    }
+    
+    h1.site-title+p.lead {
+        font-weight:400;
     }
 </style>
 
 <section>
     <div class="p-4 p-md-5 mb-4 rounded cover-bg">
         <div class="col-md-6 p-4 text-container rounded">
-            <h1 class="display-4 fst-italic"><?=$settings['name']?></h1>
+            <h1 class="site-title display-4 fst-italic"><?=$settings['name']?></h1>
             <p class="lead my-3">
                 <?=$settings['main_desc']?>
             </p>

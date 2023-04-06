@@ -10,9 +10,9 @@ $result = $conn -> query($sql);
 $user_row = $result -> fetch_assoc();
 
 if(isset($_POST['profileUpdate'])){
-    $name = $_POST['name'];
-    $phone = $_POST['phone'];
-    $aboutme = $_POST['aboutme'];
+    $name    = $conn->real_escape_string($_POST['name']);
+    $phone   = $conn->real_escape_string($_POST['phone']);
+    $aboutme = $conn->real_escape_string($_POST['aboutme']);
     $role = ROLE::USER;
     
     $sql = "UPDATE tbl_users SET name='$name', phone='$phone', aboutme='$aboutme' WHERE id = $user_id";
@@ -28,8 +28,8 @@ if(isset($_POST['profileUpdate'])){
 }
 
 if(isset($_POST['passwordUpdate'])){
-    $old_password = $_POST['oldPassword'];
-    $password = $_POST['newPassword'];
+    $old_password = $conn->real_escape_string($_POST['oldPassword']);
+    $password = $conn->real_escape_string($_POST['newPassword']);
     
     $sql = "SELECT * FROM `tbl_users` WHERE id = $user_id AND password = '$old_password'";
     $result = $conn -> query($sql);

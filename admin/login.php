@@ -1,8 +1,8 @@
 <?php require_once (dirname(__DIR__)) . "/config/conn.php"; ?>
 <?php
 if(isset($_POST['Login'])){
-    $email = $_POST['EMAIL'];
-    $password = $_POST['PASSWORD'];
+    $email    = $conn->real_escape_string($_POST['EMAIL']);
+    $password = $conn->real_escape_string($_POST['PASSWORD']);
     $role = ROLE::ADMIN;
     
     $sql = "SELECT * FROM `tbl_users` WHERE email = '$email' AND password = '$password' AND role = $role";

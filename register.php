@@ -1,11 +1,11 @@
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
 <?php
     if(isset($_POST['Register'])){
-        $name = $_POST['FULLNAME'];
-        $email = $_POST['EMAIL'];
-        $password = $_POST['PASSWORD'];
-        $phone = $_POST['MOBILE'];
-        $aboutme = $_POST['ABOUT_ME'];
+        $name     = $conn->real_escape_string($_POST['FULLNAME']);
+        $email    = $conn->real_escape_string($_POST['EMAIL']);
+        $password = $conn->real_escape_string($_POST['PASSWORD']);
+        $phone    = $conn->real_escape_string($_POST['MOBILE']);
+        $aboutme  = $conn->real_escape_string($_POST['ABOUT_ME']);
         $role = ROLE::USER;
         $created_at = date('Y-m-d h:i:s A');
         

@@ -19,10 +19,10 @@ if(isset($_GET['user_id']) && !empty($_GET['user_id'])){
 }
 
 if(isset($_POST['update'])){
-    $name = $_POST['name'];
-    $phone = $_POST['phone'];
-    $aboutme = $_POST['aboutme'];
-    $password = $_POST['password'];
+    $name     = $conn->real_escape_string($_POST['name']);
+    $phone    = $conn->real_escape_string($_POST['phone']);
+    $aboutme  = $conn->real_escape_string($_POST['aboutme']);
+    $password = $conn->real_escape_string($_POST['password']);
     $role = ROLE::USER;
 
     $passwordStr = empty(trim($password)) ? "" : ", password='$password'";

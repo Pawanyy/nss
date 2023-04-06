@@ -1,6 +1,6 @@
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
 <?php
-if(!$helper->isUserLogin()){
+if( ! $helper->isUserLogin()){
     $helper->Redirect(BASE_URL . 'login.php');
 }
 

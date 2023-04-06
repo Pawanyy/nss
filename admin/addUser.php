@@ -3,11 +3,11 @@
 $helper->IsAccessibleByAdmin();
 
 if(isset($_POST['create'])){
-    $name = $_POST['name'];
-    $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
-    $phone = $_POST['phone'];
-    $aboutme = $_POST['aboutme'];
+    $name     = $conn->real_escape_string(trim($_POST['name']));
+    $email    = $conn->real_escape_string(trim($_POST['email']));
+    $password = $conn->real_escape_string(trim($_POST['password']));
+    $phone    = $conn->real_escape_string(trim($_POST['phone']));
+    $aboutme  = $conn->real_escape_string(trim($_POST['aboutme']));
     $role = ROLE::USER;
     $created_at = date('Y-m-d h:i:s A');
     

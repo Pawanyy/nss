@@ -7,7 +7,7 @@ if(!$helper->isUserLogin()){
 $user_id = $_SESSION['uid'];
 
 if(isset($_POST['donate'])){
-    $donationAmount = $_POST['Amount'];
+    $donationAmount = $conn->real_escape_string($_POST['Amount']);
     $created_at = date('Y-m-d h:i:s A');
     
     $sql = "INSERT INTO `tbl_donation`(`donation`, `user_id`, `date`) 

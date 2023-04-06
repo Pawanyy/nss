@@ -3,8 +3,8 @@
 $helper->IsAccessibleByAdmin();
 
 if(isset($_POST['create'])){
-    $question = $_POST['question'];
-    $answer = $_POST['answer'];
+    $question = $conn->real_escape_string($_POST['question']);
+    $answer   = $conn->real_escape_string($_POST['answer']);
     
     $sql = "INSERT INTO `tbl_faq`(`question`, `answer`) 
             VALUES ('$question','$answer')";

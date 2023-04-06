@@ -8,8 +8,8 @@ $result = $conn -> query($sql);
 $user_row = $result -> fetch_assoc();
 
 if(isset($_POST['passwordUpdate'])){
-    $old_password = $_POST['oldPassword'];
-    $password = $_POST['newPassword'];
+    $old_password = $conn->real_escape_string($_POST['oldPassword']);
+    $password     = $conn->real_escape_string($_POST['newPassword']);
     $role = ROLE::ADMIN;
     
     $sql = "SELECT * FROM `tbl_users` WHERE id = $user_id AND password = '$old_password' AND role = $role";
