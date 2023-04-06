@@ -1,3 +1,6 @@
+<?php
+$currentPage = "home";
+?>
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
 <?php
     $gallery = array_splice($gallery, 0, 3);

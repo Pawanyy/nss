@@ -1,3 +1,6 @@
+<?php
+$currentPage = "gallery";
+?>
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
 
 <main aria-labelledby="title">

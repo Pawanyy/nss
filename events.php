@@ -1,3 +1,6 @@
+<?php
+$currentPage = "events";
+?>
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
 <?php
 

@@ -2,7 +2,7 @@
     <nav class="navbar sticky-top navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="<?=BASE_URL?>">
-                <img src="/assets/img/NSS.png" alt="Logo" height="35" class="d-inline-block align-text-top rounded-4">
+                <img src="<?=BASE_URL?>/assets/img/NSS.png" alt="Logo" height="35" class="d-inline-block align-text-top rounded-4">
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -10,11 +10,11 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>gallery.php">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>events.php">Events</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>contact.php">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link <?=(isset($currentPage) && $currentPage == "home") ? "active" : ""?>" href="<?=BASE_URL?>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link <?=(isset($currentPage) && $currentPage == "gallery") ? "active" : ""?>" href="<?=BASE_URL?>gallery.php">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link <?=(isset($currentPage) && $currentPage == "about") ? "active" : ""?>" href="<?=BASE_URL?>about.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link <?=(isset($currentPage) && $currentPage == "events") ? "active" : ""?>" href="<?=BASE_URL?>events.php">Events</a></li>
+                    <li class="nav-item"><a class="nav-link <?=(isset($currentPage) && $currentPage == "contact") ? "active" : ""?>" href="<?=BASE_URL?>contact.php">Contact</a></li>
 
                 </ul>
                 <form class="d-flex" role="search">

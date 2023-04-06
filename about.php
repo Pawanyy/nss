@@ -1,3 +1,6 @@
+<?php
+$currentPage = "about";
+?>
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
 <?php
 $sqlFaq = "SELECT a.*  FROM tbl_faq a; ";
