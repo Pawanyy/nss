@@ -30,7 +30,7 @@ class Helper{
 
     public function IsAccessibleByAdmin(){
 
-        if($_SESSION['role'] != ROLE::ADMIN){
+        if(!$this->IsAdminLogin()){
 
             $this->Redirect(BASE_URL . '404.php');
 
