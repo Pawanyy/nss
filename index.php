@@ -11,7 +11,7 @@ $currentPage = "home";
 ?>
 <style>
     .cover-bg {
-        background-image: url('/assets/img/bg/nssWLogo.jpg');
+        background-image: url('<?=BASE_URL?>assets/img/bg/nssWLogo.jpg');
         background-size: cover;
     }
 
