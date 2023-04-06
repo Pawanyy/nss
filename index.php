@@ -1,15 +1,25 @@
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
+<?php
+    $gallery = [
+        "assets/img/gallery/0.jpg",
+        "assets/img/gallery/00.jpg",
+        "assets/img/gallery/000.jpg",
+    ];
 
+    $sqlEvents = "SELECT a.* FROM tbl_events a ORDER BY a.id DESC LIMIT 3";
+    $resultEvents = $conn -> query($sqlEvents);
+    $rowEvents = $resultEvents -> fetch_all(MYSQLI_ASSOC);
+?>
 <style>
     .cover-bg {
         background-image: url('/assets/img/bg/nssWLogo.jpg');
         background-size: cover;
     }
 
-        .cover-bg .text-container {
-            box-shadow: inset #0000004a 0px 0px 20px 200px;
-            color: white;
-        }
+    .cover-bg .text-container {
+        box-shadow: inset #0000004a 0px 0px 20px 200px;
+        color: white;
+    }
 </style>
 
 <section>
@@ -23,7 +33,7 @@
     </div>
 </section>
 
-<section>
+<!-- <section>
     <div class="container px-4 py-5" id="icon-grid">
         <h2 class="pb-2 border-bottom">Features</h2>
 
@@ -86,8 +96,63 @@
             </div>
         </div>
     </div>
+</section> -->
+<section class="my-2">
+    <h2 class="pb-2 border-bottom">Images</h2>
+    <div class="row pt-3">
+        <?php 
+        $sl = 0;
+        foreach($gallery as $key => $value) { 
+            $sl++;
+            ?>
+        <div class="col-4 mb-3">
+            <img class="w-100 rounded shadow" src="<?=BASE_URL . $value?>" alt="Image <?=$sl?>"/>
+        </div>
+    <?php } ?>
+    </div>
+    <a class="btn btn-link w-100 h4 text-decoration-none mouse-pointer pb-2 text-center border border-1 py-2 mt-2 px-4"
+        href="<?=BASE_URL?>gallery.php">View More</a>
 </section>
-
+<section class="my-2">
+    <h2 class="pb-2 border-bottom">Events</h2>
+    <div class="row pt-3">
+        <?php 
+        $sl = 0;
+        foreach($rowEvents as $key => $value) { 
+            $sl++;
+            ?>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <?=$value['name']?>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <?=substr($value['description'], 0, 255)."..."?>
+                            <a href="<?=BASE_URL?>eventDetails.php?event_id=<?=$value['id']?>"
+                            class="btn btn-link text-decoration-none p-0">Read more</a>
+                        </p>
+                        <!-- <?php if(empty($value['reg_date'])){ ?>
+                        <a href="<?=BASE_URL?>events.php?event_id=<?=$value['id']?>"
+                            onclick="return confirm('Are you Sure to book for <?=$value['name']?> event!')"
+                            class="btn btn-warning">Book</a>
+                            <?php } else { ?>
+                                <button class="btn btn-secondary">Already Booked</button>
+                                <span class="d-block font-sm mt-2"> Registered on: <?= $value['reg_date'] ?></span>
+                            <?php } ?> -->
+                    </div>
+                    <div class="card-footer">
+                        <span><?= $value['date'] ?></span>
+                    </div>
+                </div>
+            </div>
+    <?php } ?>
+    </div>
+    <a class="btn btn-link w-100 h4 text-decoration-none mouse-pointer pb-2 text-center border border-1 py-2 mt-2 px-4"
+        href="<?=BASE_URL?>events.php">View More</a>
+</section>
 <section>
     <div class="container px-4 py-5" id="custom-cards">
         <h2 class="pb-2 border-bottom">Testimonials</h2>
@@ -96,7 +161,7 @@
             <div class="col">
                 <div class="card card-cover h-100 overflow-hidden rounded-4 shadow-lg" style="background-image: url(@Url.Content("~/assets/img/RealEstate-bg1.jpg"));">
                     <div class="d-flex flex-column h-100 p-5 py-3 text-shadow-1">
-                        <h3 class="my-4 display-6 lh-1 fw-bold"><q>I was impressed by the quantity and quality of properties on RealEstate.</q></h3>
+                        <h3 class="my-4 display-6 lh-1 fw-bold"><q>I was impressed by the quantity and quality of NSS Work.</q></h3>
                         <ul class="d-flex list-unstyled mt-auto">
                             <li class="me-auto">
                                 <i class="bi-person-circle fs-3"></i>
@@ -117,7 +182,7 @@
             <div class="col">
                 <div class="card card-cover h-100 overflow-hidden rounded-4 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
                     <div class="d-flex flex-column h-100 p-5 py-3 text-shadow-1">
-                        <h3 class="my-4 display-6 lh-1 fw-bold"><q>RealEstate's global reach helped me find the perfect investment property abroad.</q></h3>
+                        <h3 class="my-4 display-6 lh-1 fw-bold"><q>NNS's global reach helped me find the opportunity to Broden my View.</q></h3>
                         <ul class="d-flex list-unstyled mt-auto">
                             <li class="me-auto">
                                 <i class="bi-person-circle fs-3"></i>
@@ -138,7 +203,7 @@
             <div class="col">
                 <div class="card card-cover h-100 overflow-hidden rounded-4 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
                     <div class="d-flex flex-column h-100 p-5 py-3 text-shadow-1">
-                        <h3 class="my-4 display-6 lh-1 fw-bold"><q>RealEstate made buying my dream home easy and stress-free.</q></h3>
+                        <h3 class="my-4 display-6 lh-1 fw-bold"><q>NSS made me Learn may New Things By Practice.</q></h3>
                         <ul class="d-flex list-unstyled mt-auto">
                             <li class="me-auto">
                                 <i class="bi-person-circle fs-3"></i>

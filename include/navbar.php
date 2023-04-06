@@ -11,6 +11,7 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>gallery.php">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>about.php">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>events.php">Events</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=BASE_URL?>contact.php">Contact</a></li>
