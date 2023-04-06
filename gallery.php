@@ -1,21 +1,5 @@
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
 
-<?php 
-    $gallery = [
-        "assets/img/gallery/0.jpg",
-        "assets/img/gallery/00.jpg",
-        "assets/img/gallery/000.jpg",
-        "assets/img/gallery/1.jpg",
-        "assets/img/gallery/2.jpg",
-        "assets/img/gallery/3.jpg",
-        "assets/img/gallery/4.jpg",
-        "assets/img/gallery/5.jpg",
-        "assets/img/gallery/6.jpg",
-        "assets/img/gallery/7.jpg",
-        "assets/img/gallery/8.jpg",
-    ];
-?>
-
 <main aria-labelledby="title">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">

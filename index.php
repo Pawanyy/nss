@@ -1,10 +1,6 @@
 <?php require_once __DIR__ . "/include/layout-start.php"; ?>
 <?php
-    $gallery = [
-        "assets/img/gallery/0.jpg",
-        "assets/img/gallery/00.jpg",
-        "assets/img/gallery/000.jpg",
-    ];
+    $gallery = array_splice($gallery, 0, 3);
 
     $sqlEvents = "SELECT a.* FROM tbl_events a ORDER BY a.id DESC LIMIT 3";
     $resultEvents = $conn -> query($sqlEvents);
